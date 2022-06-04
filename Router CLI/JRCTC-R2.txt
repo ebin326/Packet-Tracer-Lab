@@ -1,0 +1,91 @@
+!
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname JRCTC-R2
+!
+!
+!
+enable secret 5 $1$mERr$YEMnlMnjY/D3dpk22BjDX.
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description hostname of R2
+ ip address 10.10.12.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description hostname of R3
+ ip address 10.10.13.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd !!!!!WARNING!!!!! UNAUTHORIZED ACCESS IS PROHIBITED. VIOLATERS WILL BE VERBALLY ABUSED AND PUBLICALLY RIDICULED !!!!!WARNING!!!!!
+banner motd 
+!
+!
+!
+!
+!
+line con 0
+ password 7 0822455D0A165445415F59
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password 7 0822455D0A165445415F5952
+ login
+line vty 5 15
+ password 7 0822455D0A165445415F5952
+ login
+!
+!
+!
+end
+
